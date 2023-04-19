@@ -1,8 +1,10 @@
 <template>
-    <div v-for="(item, index) in rest" :key="index" class="md:container md:mx-auto p-5 ">
-            <a
+  <!--
+    if the state == ture then there will be class ture will be added and removed if not
+  -->
+    <div class="md:container md:mx-auto p-5 " :class="{true: state===true}" >
+      <a
               class="relative flex items-start justify-between rounded-xl border border-gray-100 p-4 shadow-xl bg-white"
-              href="#"
             >
               <div class="pt-4 text-gray-500">
                 <svg
@@ -21,7 +23,7 @@
                 </svg>
 
                 <h3 class="mt-4 text-lg font-bold text-gray-900 sm:text-xl">
-                  {{item.name}}
+                  {{name}}
                 </h3>
 
                 <p class="mt-2 hidden text-sm sm:block">
@@ -33,21 +35,23 @@
               <span
                 class="rounded-full bg-green-100 px-3 py-1.5 text-xs font-medium text-green-600"
               >
-                {{item.rate}}
+                {{rate}}
               </span>
             </a>
     </div>
 </template>
 <script>
 export default{
-  data() {
-    return {
-      rest: [
-  {name:"KFC",rate:3.1},
-  {name:"maza",rate:4.1},
-  {name:"kaza",rate:4.1},
-  {name:"moment", rate:3.1},
-  {name:"abc",rate:0.1},
-]}},
+  props:['name','rate','state'],
+  methods:{
+    // selected(){
+    //   this.state = !this.state
+    // }
+  }
 }
 </script>
+<style>
+.true{
+  background-color: brown;
+}
+</style>
